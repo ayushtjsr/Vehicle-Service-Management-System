@@ -1,0 +1,54 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    container_name: vehicle-postgres-db
+    restart: always
+    environment:
+      POSTGRES_DB: vehicle_service_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: VehiclePostgres@123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 8014:5432
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: vehicle-django-backend
+    restart: always
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./server:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: vehicle-react-frontend
+    restart: always
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    ports:
+      - 5173:5173
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
