@@ -2,6 +2,8 @@
 
 <p>A comprehensive web application for managing vehicle services, repairs, and payments. The system includes a Django backend, React frontend, and PostgreSQL database running via Docker.</p>
 
+![1Main page](https://github.com/user-attachments/assets/08ca0456-a89f-4d32-b382-b5fffc6469b9)
+
 ---
 
 <h2>Features</h2>
@@ -184,6 +186,6 @@ python manage.py migrate
 <p>Visualize revenue trends through graphs. Analyze daily, monthly, and yearly revenue generated from repair and service payments.</p>
 
 
----![1Main page](https://github.com/user-attachments/assets/08ca0456-a89f-4d32-b382-b5fffc6469b9)
+---
 
 
