@@ -184,5 +184,6 @@ python manage.py migrate
 <p>Visualize revenue trends through graphs. Analyze daily, monthly, and yearly revenue generated from repair and service payments.</p>
 
 
----
+---![1Main page](https://github.com/user-attachments/assets/08ca0456-a89f-4d32-b382-b5fffc6469b9)
+
 
